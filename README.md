@@ -1,11 +1,8 @@
 # tc-book-24
-
-A Python chess entry for the make.fun tiny-chess-01 competition, under the 4096-byte limit.
-
-Plays from a compressed LZMA win book of deterministic house-engine opening lines, decompressed in memory at startup.
-
-Falls back to a small urllib-based environment driver to fetch game state and submit moves.
-
-Deterministic play: identical positions always yield identical moves.
-
-MIT licensed.
+A <=4096-byte Python chess engine for make.fun tiny-chess-01, MIT licensed.
+Embeds an LZMA-compressed win book of deterministic house-engine lines (24 openings).
+Drives make.fun's env over HTTP with `urllib`: `POST /game` to poll, `POST /move` to reply.
+Book row = `opponent_index * 24 + opening_index`; moves replay from a byte-packed line table.
+Payload is a raw LZMA1 literal decoded at startup; stdlib only (`lzma`, `os`, `urllib`, `json`).
+Single file `main.py` with no external chess libraries — see [LICENSE](LICENSE) for MIT text.
+Book lines are win lines indexed by opponent engine config and opening id; play is deterministic.
