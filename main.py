@@ -1,5 +1,5 @@
 # -*- coding: latin-1 -*-
-# env driver: POST /game and /move, book row = opponent_index*24 + opening_index
+# row=opp*24+open
 import lzma,os,urllib.request as U,json as J
 E=os.environ['MAKEFUN_ENV_URL']
 Q=lambda p,d:J.loads(U.urlopen(U.Request(E+p,J.dumps(d).encode())).read())
