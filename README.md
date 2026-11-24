@@ -1,7 +1,11 @@
 # tc-book-24
 
-A 4 KB Python chess entry for the make.fun tiny-chess-01 competition.
-Opening play is driven by a compressed LZMA-embedded win book, while a
-tiny HTTP env driver handles move requests from the game server.
-Positions not covered by the book fall back to the first legal move.
-Licensed under the MIT License (see LICENSE).
+A Python chess entry for the make.fun tiny-chess-01 competition, under the 4096-byte limit.
+
+Plays from a compressed LZMA win book of deterministic house-engine opening lines, decompressed in memory at startup.
+
+Falls back to a small urllib-based environment driver to fetch game state and submit moves.
+
+Deterministic play: identical positions always yield identical moves.
+
+MIT licensed.
